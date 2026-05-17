@@ -1,0 +1,53 @@
+{
+  "adversarial_evasion_test": [
+    "zero_width_jndi",
+    "homoglyph_jndi",
+    "triple_url_encoded",
+    "html_entity_jndi",
+    "semantic_lookup_jndi",
+    "lookup_character_concat",
+    "context_embedded_payload"
+  ],
+  "external_tests": [
+    "greedybear_or_honeynet_log4pot",
+    "splunk_log4shell",
+    "foxit_pcap_http",
+    "elastic_apache_access_logs"
+  ],
+  "ood_stress_test": [
+    "frozen_model_only",
+    "new_lookup_namespaces",
+    "percent_u_encoding",
+    "benign_encoded_payload_examples",
+    "balanced_malicious_and_hard_negative_rows"
+  ],
+  "test": [
+    "standard_variants",
+    "realistic_benign"
+  ],
+  "train": [
+    "plain_jndi",
+    "ldap",
+    "rmi",
+    "dns",
+    "ldaps",
+    "simple_url_encoded",
+    "case_manipulation",
+    "hard_negatives",
+    "benign_payload_contexts"
+  ],
+  "unseen_obfuscation_test": [
+    "nested_lookup",
+    "env_fallback",
+    "fragmented_tokens",
+    "double_url_encoding",
+    "unicode_escape",
+    "mixed_separator"
+  ],
+  "validation": [
+    "plain_jndi_different_hosts",
+    "simple_header_payloads",
+    "benign_validation",
+    "hard_negative_threshold_calibration"
+  ]
+}

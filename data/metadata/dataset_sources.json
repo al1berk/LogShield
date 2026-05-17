@@ -1,0 +1,88 @@
+{
+  "adversarial_evasion": "Malicious evasion probes designed to bypass simple/static regex signatures.",
+  "benign_apache_format": "Synthetic Apache combined-log rows used only in train/validation/standard test to reduce format-driven false positives.",
+  "elastic_apache_access_logs": "Public benign Apache access logs used as supplementary external false-positive validation.",
+  "external_fetch": {
+    "fetch_external": true,
+    "sources": {
+      "curatedintel_log4shell_iocs": {
+        "role": "Callback-host and indicator context only; not treated as labeled HTTP access-log rows.",
+        "sources": [
+          {
+            "indicator_preview": [
+              "\"60dab593-1c51-443e-84c5-3adf30192591\",4131,\"Network activity\",\"url\",\"http://170.178.196.41:8080/UKTPAnRvns\",\"\",0,1639438046,\"source.url\",\"\",\"3809b0e3-9d91-4e27-ba24-a1600acad407\",\"intelmq_event\",\"network\",\"Log4j URLHaus IOC Feed\",\"Log4j-CI\",\"Log4j-CI\",1,\"High\",0,\"2021-12-13\",\"collection:ioc-source=\"\"abuse.ch\"\",tlp:white,false-positive:risk=\"\"medium\"\",collection:type=\"\"automatic\"\"\",1646322187",
+              "\"2f194363-dffd-4c2e-860c-081d47636cf6\",4131,\"Other\",\"text\",\"offline\",\"\",0,1639438046,\"status\",\"\",\"3809b0e3-9d91-4e27-ba24-a1600acad407\",\"intelmq_event\",\"network\",\"Log4j URLHaus IOC Feed\",\"Log4j-CI\",\"Log4j-CI\",1,\"High\",0,\"2021-12-13\",\"collection:ioc-source=\"\"abuse.ch\"\",tlp:white,false-positive:risk=\"\"medium\"\",collection:type=\"\"automatic\"\"\",1646322187",
+              "\"fddb5200-67dd-49b3-81a0-302e554fbbaa\",4131,\"Other\",\"text\",\"elf,log4j\",\"\",0,1639438046,\"comment\",\"\",\"3809b0e3-9d91-4e27-ba24-a1600acad407\",\"intelmq_event\",\"network\",\"Log4j URLHaus IOC Feed\",\"Log4j-CI\",\"Log4j-CI\",1,\"High\",0,\"2021-12-13\",\"collection:ioc-source=\"\"abuse.ch\"\",tlp:white,false-positive:risk=\"\"medium\"\",collection:type=\"\"automatic\"\"\",1646322187",
+              "\"0d9822d7-8f61-416d-aa66-454061af37fd\",4131,\"Network activity\",\"url\",\"http://170.178.196.41:35244/qIoPIauO\",\"\",0,1639438046,\"source.url\",\"\",\"2907d359-a202-4529-8198-900b71552b1e\",\"intelmq_event\",\"network\",\"Log4j URLHaus IOC Feed\",\"Log4j-CI\",\"Log4j-CI\",1,\"High\",0,\"2021-12-13\",\"collection:ioc-source=\"\"abuse.ch\"\",tlp:white,false-positive:risk=\"\"medium\"\",collection:type=\"\"automatic\"\"\",1646322187",
+              "\"0a0756a1-bae9-469c-b510-fddbfa616cf7\",4131,\"Other\",\"text\",\"offline\",\"\",0,1639438046,\"status\",\"\",\"2907d359-a202-4529-8198-900b71552b1e\",\"intelmq_event\",\"network\",\"Log4j URLHaus IOC Feed\",\"Log4j-CI\",\"Log4j-CI\",1,\"High\",0,\"2021-12-13\",\"collection:ioc-source=\"\"abuse.ch\"\",tlp:white,false-positive:risk=\"\"medium\"\",collection:type=\"\"automatic\"\"\",1646322187"
+            ],
+            "rows": 1442,
+            "url": "https://raw.githubusercontent.com/curated-intel/Log4Shell-IOCs/main/KPMG_Log4Shell_Feeds/MISP-CSV_MediumConfidence_Unfiltered/Log4j_URLHaus_ThreatHunt_Feed.csv"
+          },
+          {
+            "indicator_preview": [
+              "\ufeffIOC Type,IOC,Context,Source",
+              "URL,hxxp://205[.]185[.]113[.]59:1234/[.]inis,8220 Mining Group,hxxps://blog[.]netlab[.]360[.]com/ten-families-of-malicious-samples-are-spreading-using-the-log4j2-vulnerability-now/",
+              "URL,hxxp://205[.]185[.]113[.]59:1234/[.]rsyslogds,8220 Mining Group,hxxps://blog[.]netlab[.]360[.]com/ten-families-of-malicious-samples-are-spreading-using-the-log4j2-vulnerability-now/",
+              "URL,hxxp://205[.]185[.]113[.]59:1234/xmss,8220 Mining Group,hxxps://blog[.]netlab[.]360[.]com/ten-families-of-malicious-samples-are-spreading-using-the-log4j2-vulnerability-now/",
+              "URL,hxxp://agent[.]apacheorg[.]top:1234/xmss ,8220 Mining Group,hxxps://blog[.]netlab[.]360[.]com/ten-families-of-malicious-samples-are-spreading-using-the-log4j2-vulnerability-now/"
+            ],
+            "rows": 327,
+            "url": "https://raw.githubusercontent.com/curated-intel/Log4Shell-IOCs/main/ETAC_Log4Shell_Analysis/ETAC_Vetted_Log4Shell_IOCs.csv"
+          }
+        ]
+      },
+      "external_benign_web_test": {
+        "role": "Public benign Apache access logs used for supplementary external false-positive checks.",
+        "rows": 200,
+        "source": "elastic_apache_access_logs",
+        "url": "https://raw.githubusercontent.com/elastic/examples/master/Common%20Data%20Formats/apache_logs/apache_logs",
+        "used_fallback": false
+      },
+      "external_foxit_pcap_test": {
+        "reason": "extracted with tshark",
+        "rows": 4,
+        "source": "foxit_pcap_http",
+        "urls": [
+          "https://raw.githubusercontent.com/fox-it/log4shell-pcaps/main/log4shell-ldap-pcaps/ldap-user-agent-ev0.pcap",
+          "https://raw.githubusercontent.com/fox-it/log4shell-pcaps/main/log4shell-ldap-pcaps/ldap-uri-params-ev0.pcap",
+          "https://raw.githubusercontent.com/fox-it/log4shell-pcaps/main/log4shell-rmi-pcaps/rmi-user-agent-ev0.pcap",
+          "https://raw.githubusercontent.com/fox-it/log4shell-pcaps/main/log4shell-rmi-pcaps/rmi-uri-params-ev0.pcap",
+          "https://raw.githubusercontent.com/fox-it/log4shell-pcaps/main/log4shell-rmi-pcaps/rmi-x-api-version-ev0.pcap"
+        ],
+        "used_fallback": false
+      },
+      "external_greedybear_test": {
+        "rows": 60,
+        "source": "honeynet_log4shell",
+        "urls": [
+          "https://raw.githubusercontent.com/honeynet/log4shell-data/main/logstash_raw.csv",
+          "https://raw.githubusercontent.com/honeynet/log4shell-data/main/logstash_raw_2.csv",
+          "https://raw.githubusercontent.com/honeynet/log4shell-data/main/logstash_raw_3.csv"
+        ],
+        "used_fallback": false
+      },
+      "external_splunk_test": {
+        "rows": 1,
+        "source": "splunk_attack_data",
+        "urls": [
+          "https://media.githubusercontent.com/media/splunk/attack_data/master/datasets/suspicious_behaviour/log4shell_exploitation/log4shell_correlation.log"
+        ],
+        "used_fallback": false
+      },
+      "payloadsallthethings": {
+        "role": "Payload taxonomy and unseen-obfuscation expansion, not training data.",
+        "rows": 13,
+        "url": "https://raw.githubusercontent.com/swisskyrepo/PayloadsAllTheThings/master/CVE%20Exploits/Log4Shell.md",
+        "used_fallback": false
+      }
+    }
+  },
+  "foxit_pcap_http": "Fox-IT PCAP extraction is supported by scripts/extract_foxit_pcap.py; fallback examples keep the validation file reproducible offline.",
+  "hard_negative": "Benign documentation, search, configuration, and escaped payload examples.",
+  "honeynet_log4shell": "Public Honeynet Log4Shell honeypot CSVs used as supplementary external malicious validation.",
+  "honeynet_log4shell_fallback": "Curated Honeynet-style fallback examples used offline.",
+  "ood_stress_test": "Frozen-model stress split generated by scripts/build_ood_stress_test.py. It is not used for training, validation, regex tuning, or threshold calibration.",
+  "splunk_attack_data": "Public Splunk attack_data Log4Shell simulation is used when reachable; curated fallback examples are used offline.",
+  "synthetic": "Controlled Log4Shell payload variants generated by scripts/build_dataset.py."
+}

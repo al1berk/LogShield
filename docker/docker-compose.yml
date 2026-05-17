@@ -1,0 +1,30 @@
+version: "3.8"
+
+networks:
+  log4j-lab:
+    driver: bridge
+
+services:
+  # ── Vulnerable Log4j 2.14.1 Java HTTP server ────────────────────────────────
+  victim-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.victim
+    container_name: victim-app
+    ports:
+      - "127.0.0.1:8080:8080"
+    networks:
+      - log4j-lab
+    labels:
+      - "project=log4shell-bilstm"
+    restart: unless-stopped
+
+  # ── Stub LDAP server (attacker-side — for full demo, replace with marshalsec) ─
+  # Uncomment to enable:
+  # ldap-server:
+  #   image: ghcr.io/veracode-research/rogue-jndi:latest
+  #   container_name: ldap-server
+  #   ports:
+  #     - "127.0.0.1:1389:1389"
+  #   networks:
+  #     - log4j-lab

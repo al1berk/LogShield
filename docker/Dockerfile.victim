@@ -1,0 +1,28 @@
+# =============================================================================
+# Dockerfile.victim
+# Builds a vulnerable Log4j 2.14.1 Java HTTP server for CVE-2021-44228 demos.
+# Academic use only — Akdeniz University CSE 472 Security Project.
+# =============================================================================
+
+FROM openjdk:8-jdk-alpine
+
+WORKDIR /app
+
+# Download Log4j 2.14.1 jars (vulnerable version)
+RUN apk add --no-cache wget && \
+    mkdir -p /app/lib && \
+    wget -q -O /app/lib/log4j-api-2.14.1.jar \
+      "https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar" && \
+    wget -q -O /app/lib/log4j-core-2.14.1.jar \
+      "https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.14.1/log4j-core-2.14.1.jar"
+
+# Copy source and Log4j2 config
+COPY VulnerableApp.java /app/
+COPY log4j2.xml /app/
+
+# Compile
+RUN javac -cp "/app/lib/*" /app/VulnerableApp.java -d /app/out/
+
+EXPOSE 8080
+
+CMD ["java", "-cp", "/app/out:/app/lib/*", "-Dlog4j2.configurationFile=/app/log4j2.xml", "VulnerableApp"]

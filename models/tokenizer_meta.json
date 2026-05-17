@@ -1,0 +1,19 @@
+{
+  "vocab_size": 93,
+  "max_len": 512,
+  "signal_keys": [
+    "has_jndi",
+    "has_ldap",
+    "has_rmi",
+    "has_dns",
+    "has_ldaps",
+    "has_lookup_syntax",
+    "has_nested_lookup",
+    "has_url_encoding",
+    "has_html_entity",
+    "has_unicode_escape",
+    "has_lower_upper_lookup",
+    "has_env_fallback",
+    "has_fragmented_jndi"
+  ]
+}

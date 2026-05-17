@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  detector-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./models:/app/models
+      - ./results:/app/results
+      - ./data:/app/data
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: streamlit run dashboard/app.py --server.address 0.0.0.0 --server.port 8501
+    ports:
+      - "127.0.0.1:8501:8501"
+    depends_on:
+      - detector-api
+    volumes:
+      - ./models:/app/models
+      - ./results:/app/results
+      - ./data:/app/data
+
+  vulnerable-demo-app:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.victim
+    ports:
+      - "127.0.0.1:8080:8080"
+
+  log-generator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python demo/log_generator.py --target http://vulnerable-demo-app:8080 --api http://detector-api:8000 --iterations 2 --sleep 3
+    depends_on:
+      - detector-api
+      - vulnerable-demo-app
+    volumes:
+      - ./demo/logs:/app/demo/logs
+      - ./results:/app/results

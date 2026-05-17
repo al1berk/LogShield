@@ -1,0 +1,117 @@
+{
+  "binary_thresholds": {
+    "bilstm_attention": 0.49999999999999994,
+    "bilstm_normalized": 0.49999999999999994,
+    "bilstm_original": 0.49999999999999994,
+    "bilstm_signal": 0.49999999999999994,
+    "regex": 0.7
+  },
+  "calibrated_thresholds": {
+    "bilstm_attention": 0.49999999999999994,
+    "bilstm_normalized": 0.49999999999999994,
+    "bilstm_original": 0.49999999999999994,
+    "bilstm_signal": 0.49999999999999994,
+    "regex": 0.7
+  },
+  "generated_at": "2026-05-16T22:15:31.966203+00:00",
+  "notes": {
+    "selection": "Thresholds maximize validation F1 with ties resolved toward the model default."
+  },
+  "risk_bands": {
+    "benign_max_exclusive": 0.35,
+    "malicious_min": 0.7,
+    "suspicious_min": 0.35
+  },
+  "validation_metrics": {
+    "bilstm_attention": {
+      "accuracy": 1.0,
+      "f1": 1.0,
+      "fn": 0,
+      "fnr": 0.0,
+      "fp": 0,
+      "fpr": 0.0,
+      "latency_ms": 0.0,
+      "negative_support": 350,
+      "positive_support": 72,
+      "pr_auc": 0.9999999999999999,
+      "precision": 1.0,
+      "recall": 1.0,
+      "roc_auc": 1.0,
+      "throughput_lps": 0.0,
+      "tn": 350,
+      "tp": 72
+    },
+    "bilstm_normalized": {
+      "accuracy": 1.0,
+      "f1": 1.0,
+      "fn": 0,
+      "fnr": 0.0,
+      "fp": 0,
+      "fpr": 0.0,
+      "latency_ms": 0.0,
+      "negative_support": 350,
+      "positive_support": 72,
+      "pr_auc": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "roc_auc": 1.0,
+      "throughput_lps": 0.0,
+      "tn": 350,
+      "tp": 72
+    },
+    "bilstm_original": {
+      "accuracy": 1.0,
+      "f1": 1.0,
+      "fn": 0,
+      "fnr": 0.0,
+      "fp": 0,
+      "fpr": 0.0,
+      "latency_ms": 0.0,
+      "negative_support": 350,
+      "positive_support": 72,
+      "pr_auc": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "roc_auc": 1.0,
+      "throughput_lps": 0.0,
+      "tn": 350,
+      "tp": 72
+    },
+    "bilstm_signal": {
+      "accuracy": 1.0,
+      "f1": 1.0,
+      "fn": 0,
+      "fnr": 0.0,
+      "fp": 0,
+      "fpr": 0.0,
+      "latency_ms": 0.0,
+      "negative_support": 350,
+      "positive_support": 72,
+      "pr_auc": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "roc_auc": 1.0,
+      "throughput_lps": 0.0,
+      "tn": 350,
+      "tp": 72
+    },
+    "regex": {
+      "accuracy": 0.7938388625592417,
+      "f1": 0.6233766233766234,
+      "fn": 0,
+      "fnr": 0.0,
+      "fp": 87,
+      "fpr": 0.24857142857142858,
+      "latency_ms": 0.0,
+      "negative_support": 350,
+      "positive_support": 72,
+      "pr_auc": 0.4528301886792453,
+      "precision": 0.4528301886792453,
+      "recall": 1.0,
+      "roc_auc": 0.8757142857142858,
+      "throughput_lps": 0.0,
+      "tn": 263,
+      "tp": 72
+    }
+  }
+}
