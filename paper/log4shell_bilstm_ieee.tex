@@ -194,6 +194,9 @@ uses Uniform Resource Locator (URL), Java Naming and Directory Interface
 validation sources. Table~\ref{tab:sources} summarizes the dataset sources and
 their roles. The table is created by us from the repository pipeline rather
 than copied from external work.
+External validation and payload metadata use public Log4Shell resources from
+Fox-IT, Splunk, PayloadsAllTheThings, and Curated Intelligence
+\cite{foxit_pcaps,splunk_attack_data,payloadsallthethings,curatedintel}.
 
 \begin{table}[!t]
 \caption{Dataset sources and their evaluation roles.}
@@ -582,20 +585,20 @@ to other log-injectable vulnerabilities beyond Log4Shell.
 \bibitem{microsoft_guidance} Microsoft, ``Guidance for preventing, detecting, and hunting for exploitation of the Log4j 2 vulnerability,'' 2021.
 \bibitem{cloudflare_payloads} Cloudflare, ``Actual CVE-2021-44228 payloads captured in the wild,'' 2021.
 \bibitem{honeynet_data} Honeynet Project, ``log4shell-data,'' \url{https://github.com/honeynet/log4shell-data}.
+\bibitem{race_vulnerable} J. A. Ruohonen, ``The race to the vulnerable: Measuring the Log4j shell incident,'' arXiv:2205.02544, 2022.
 \bibitem{greedybear_docs} The Honeynet Project, ``GreedyBear Usage Documentation,'' \url{https://greedybear-docs.readthedocs.io/en/latest/Usage.html}.
+\bibitem{mirsky2023} Y. Mirsky, T. Doitshman, Y. Elovici, and A. Shabtai, ``Kitsune: An ensemble of autoencoders for online network intrusion detection,'' in \textit{Proc. NDSS}, 2018, pp. 1--15.
+\bibitem{ring2019} M. Ring, S. Wunderlich, D. Scheuring, D. Landes, and A. Hotho, ``A survey of network-based intrusion detection data sets,'' \textit{Computers \& Security}, vol. 86, pp. 147--167, 2019.
+\bibitem{ferrag2020} M. A. Ferrag, L. Maglaras, S. Moschoyiannis, and H. Janicke, ``Deep learning for cyber security intrusion detection: Approaches, datasets, and comparative study,'' \textit{Journal of Information Security and Applications}, vol. 50, 102419, 2020.
+\bibitem{hochreiter1997} S. Hochreiter and J. Schmidhuber, ``Long Short-Term Memory,'' \textit{Neural Computation}, vol. 9, no. 8, pp. 1735--1780, 1997.
+\bibitem{graves2013} A. Graves, A. Mohamed, and G. Hinton, ``Speech recognition with deep recurrent neural networks,'' in \textit{Proc. IEEE ICASSP}, 2013, pp. 6645--6649.
+\bibitem{saxe2017} J. Saxe and K. Berlin, ``eXpose: A character-level convolutional neural network with embeddings for detecting malicious URLs, file paths and registry keys,'' arXiv:1702.08568, 2017.
+\bibitem{bahdanau2015} D. Bahdanau, K. Cho, and Y. Bengio, ``Neural machine translation by jointly learning to align and translate,'' in \textit{Proc. ICLR}, 2015.
+\bibitem{kdd_analysis} M. Tavallaee, E. Bagheri, W. Lu, and A. A. Ghorbani, ``A detailed analysis of the KDD CUP 99 data set,'' in \textit{Proc. IEEE CISDA}, 2009, pp. 1--6.
 \bibitem{foxit_pcaps} Fox-IT, ``Log4Shell PCAPS and Network Coverage,'' \url{https://github.com/fox-it/log4shell-pcaps}.
 \bibitem{splunk_attack_data} Splunk, ``Log4Shell attack data,'' \url{https://research.splunk.com/attack_data/987c92c7-defa-4a3a-baf4-3973501aec8c/}.
 \bibitem{payloadsallthethings} PayloadsAllTheThings, ``CVE-2021-44228 Log4Shell,'' \url{https://swisskyrepo.github.io/PayloadsAllTheThings/CVE%20Exploits/Log4Shell/}.
 \bibitem{curatedintel} Curated Intelligence, ``Log4Shell IOCs,'' \url{https://github.com/curated-intel/Log4Shell-IOCs}.
-\bibitem{hochreiter1997} S. Hochreiter and J. Schmidhuber, ``Long Short-Term Memory,'' \textit{Neural Computation}, vol. 9, no. 8, pp. 1735--1780, 1997.
-\bibitem{graves2013} A. Graves, A. Mohamed, and G. Hinton, ``Speech recognition with deep recurrent neural networks,'' in \textit{Proc. IEEE ICASSP}, 2013, pp. 6645--6649.
-\bibitem{saxe2017} J. Saxe and K. Berlin, ``eXpose: A character-level convolutional neural network with embeddings for detecting malicious URLs, file paths and registry keys,'' arXiv:1702.08568, 2017.
-\bibitem{ring2019} M. Ring, S. Wunderlich, D. Scheuring, D. Landes, and A. Hotho, ``A survey of network-based intrusion detection data sets,'' \textit{Computers \& Security}, vol. 86, pp. 147--167, 2019.
-\bibitem{kdd_analysis} M. Tavallaee, E. Bagheri, W. Lu, and A. A. Ghorbani, ``A detailed analysis of the KDD CUP 99 data set,'' in \textit{Proc. IEEE CISDA}, 2009, pp. 1--6.
-\bibitem{race_vulnerable} J. A. Ruohonen, ``The race to the vulnerable: Measuring the Log4j shell incident,'' arXiv:2205.02544, 2022.
-\bibitem{mirsky2023} Y. Mirsky, T. Doitshman, Y. Elovici, and A. Shabtai, ``Kitsune: An ensemble of autoencoders for online network intrusion detection,'' in \textit{Proc. NDSS}, 2018, pp. 1--15.
-\bibitem{ferrag2020} M. A. Ferrag, L. Maglaras, S. Moschoyiannis, and H. Janicke, ``Deep learning for cyber security intrusion detection: Approaches, datasets, and comparative study,'' \textit{Journal of Information Security and Applications}, vol. 50, 102419, 2020.
-\bibitem{bahdanau2015} D. Bahdanau, K. Cho, and Y. Bengio, ``Neural machine translation by jointly learning to align and translate,'' in \textit{Proc. ICLR}, 2015.
 \end{thebibliography}
 
 \end{document}
